@@ -1,448 +1,259 @@
-"use client";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rajkumar BK – IT Network Engineer</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.383.0/umd/lucide.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            zinc: {
+              300: '#d4d4d8',
+              400: '#a1a1aa',
+              500: '#71717a',
+              900: '#18181b',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #050505; color: white; }
 
-import Image from "next/image";
-import {
-  Search,
-  Sun,
-  Network,
-  Server,
-  ShieldCheck,
-  Globe,
-  Mail,
-  Linkedin,
-  Github,
-  MonitorSmartphone,
-} from "lucide-react";
+    /* Pulse animation for green dot */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
 
-export default function Home() {
-  return (
-    <main className="bg-[#050505] text-white min-h-screen overflow-hidden">
+    /* Hover rotate for moon button */
+    .hover-rotate:hover { transform: rotate(180deg); }
+    .hover-rotate { transition: transform 0.5s; }
 
-      {/* TOP BORDER */}
-      <div className="h-1 bg-orange-500 w-full"></div>
+    /* Card hover */
+    .card-hover { transition: border-color 0.3s, transform 0.3s; }
+    .card-hover:hover { border-color: #f97316; transform: translateY(-8px); }
 
-      {/* NAVBAR */}
-      <header className="border-b border-zinc-900 sticky top-0 z-50 backdrop-blur-xl bg-black/70">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+    /* Nav link hover */
+    .nav-link { transition: color 0.2s; }
+    .nav-link:hover { color: #fb923c; }
 
-          {/* LOGO */}
-          <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 via-purple-500 to-cyan-400 flex items-center justify-center text-3xl font-black shadow-lg">
-              R
-            </div>
+    /* Button hover */
+    .btn-secondary { transition: border-color 0.2s; }
+    .btn-secondary:hover { border-color: #f97316; }
+  </style>
+</head>
+<body class="min-h-screen overflow-x-hidden">
 
-            <div>
-              <h1 className="text-3xl font-extrabold tracking-wide">
-                RAJKUMAR BK
-              </h1>
+  <!-- TOP BORDER -->
+  <div class="h-[3px] bg-orange-500"></div>
 
-              <p className="text-sm text-zinc-400">
-                IT NETWORK ENGINEER
-              </p>
-            </div>
-          </div>
+  <!-- NAVBAR -->
+  <header class="border-b border-white/5 backdrop-blur-xl sticky top-0 z-50 bg-black/60">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
 
-          {/* MENU */}
-          <nav className="hidden lg:flex items-center gap-10 text-lg font-medium">
-
-            <a
-              href="#"
-              className="bg-zinc-900 px-5 py-3 rounded-xl text-orange-500 shadow-lg"
-            >
-              Home
-            </a>
-
-            <a
-              href="#about"
-              className="hover:text-orange-400 transition"
-            >
-              About
-            </a>
-
-            <a
-              href="#skills"
-              className="hover:text-orange-400 transition"
-            >
-              Skills
-            </a>
-
-            <a
-              href="#experience"
-              className="hover:text-orange-400 transition"
-            >
-              Experience
-            </a>
-
-            <a
-              href="#projects"
-              className="hover:text-orange-400 transition"
-            >
-              Projects
-            </a>
-
-            <a
-              href="#contact"
-              className="hover:text-orange-400 transition"
-            >
-              Contact
-            </a>
-          </nav>
-
-          {/* SEARCH */}
-          <div className="hidden xl:flex items-center gap-4">
-
-            <div className="flex items-center bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-3 w-[320px]">
-              <input
-                type="text"
-                placeholder="Search ..."
-                className="bg-transparent outline-none flex-1 text-zinc-300"
-              />
-              <Search className="text-zinc-400" />
-            </div>
-
-            <button className="bg-white text-black p-4 rounded-xl hover:rotate-180 transition duration-500">
-              <Sun />
-            </button>
-
-          </div>
-
+      <!-- LOGO -->
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 via-purple-500 to-cyan-400 flex items-center justify-center font-black text-3xl shadow-2xl">
+          R
         </div>
-      </header>
+        <div>
+          <h1 class="text-3xl font-black tracking-tight">RAJKUMAR BK</h1>
+          <p class="text-zinc-400 text-sm">IT NETWORK ENGINEER</p>
+        </div>
+      </div>
 
-      {/* HERO SECTION */}
-      <section className="relative">
+      <!-- NAVIGATION -->
+      <nav class="hidden lg:flex items-center gap-10 text-lg">
+        <a href="#" class="text-orange-500 font-semibold">Home</a>
+        <a href="#" class="nav-link text-white">Skills</a>
+        <a href="#" class="nav-link text-white">Experience</a>
+        <a href="#" class="nav-link text-white">Projects</a>
+        <a href="#" class="nav-link text-white">Contact</a>
+      </nav>
 
-        {/* BG EFFECT */}
-        <div className="absolute top-40 right-40 w-[500px] h-[500px] bg-purple-700/20 blur-[150px] rounded-full"></div>
+      <!-- RIGHT SIDE -->
+      <div class="hidden xl:flex items-center gap-5">
+        <div class="flex items-center bg-zinc-900 border border-white/10 rounded-xl px-5 py-3 w-[280px]">
+          <input type="text" placeholder="Search ..." class="bg-transparent outline-none flex-1 text-zinc-300" />
+          <i data-lucide="search" class="text-zinc-500 w-5 h-5"></i>
+        </div>
+        <button class="bg-white text-black p-4 rounded-xl hover-rotate">
+          <i data-lucide="moon" class="w-5 h-5"></i>
+        </button>
+      </div>
 
-        <div className="max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-2 gap-16 items-center">
+    </div>
+  </header>
 
-          {/* LEFT CONTENT */}
+  <!-- HERO SECTION -->
+  <section class="relative">
+
+    <!-- GLOW EFFECTS -->
+    <div class="absolute top-32 left-20 w-[400px] h-[400px] bg-orange-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+    <div class="absolute right-0 top-20 w-[500px] h-[500px] bg-purple-500/10 blur-[150px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 py-24 lg:py-32 grid lg:grid-cols-2 gap-20 items-center">
+
+      <!-- LEFT SIDE -->
+      <div>
+
+        <!-- Available badge -->
+        <div class="inline-flex items-center gap-3 bg-zinc-900 border border-white/10 px-5 py-3 rounded-full mb-8">
+          <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+          <span class="text-zinc-300">Available for IT Infrastructure Projects</span>
+        </div>
+
+        <!-- Heading -->
+        <h1 class="text-6xl md:text-7xl xl:text-8xl font-black leading-[1.05] tracking-tight">
+          Modern<br />
+          <span class="bg-gradient-to-r from-orange-400 to-orange-600 text-transparent bg-clip-text">IT Network</span><br />
+          Engineer
+        </h1>
+
+        <!-- Description -->
+        <p class="text-zinc-400 text-xl leading-10 mt-10 max-w-2xl">
+          Passionate IT Network Engineer living in Japan with experience in enterprise networking, Microsoft 365, Active Directory, virtualization, cloud technologies, VPN troubleshooting, infrastructure operations, and enterprise IT support.
+        </p>
+
+        <p class="text-zinc-500 text-lg leading-9 mt-8 max-w-2xl">
+          Currently working in a multinational company supporting enterprise-level infrastructure, endpoint management, Microsoft ecosystems, cloud operations, and network environments.
+        </p>
+
+        <!-- BUTTONS -->
+        <div class="flex flex-wrap gap-6 mt-14">
+          <button class="bg-orange-500 hover:bg-orange-600 transition px-10 py-5 rounded-2xl text-xl font-semibold shadow-[0_20px_80px_rgba(255,115,0,0.35)] flex items-center gap-3">
+            Explore Portfolio
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+          </button>
+          <button class="btn-secondary bg-zinc-900 border border-white/10 px-10 py-5 rounded-2xl text-xl font-semibold">
+            Download Resume
+          </button>
+        </div>
+
+        <!-- STATS -->
+        <div class="grid grid-cols-3 gap-10 mt-20 border-t border-white/10 pt-10">
           <div>
+            <h2 class="text-5xl font-black text-orange-500">3+</h2>
+            <p class="text-zinc-500 mt-3">Years Experience</p>
+          </div>
+          <div>
+            <h2 class="text-5xl font-black text-orange-500">100+</h2>
+            <p class="text-zinc-500 mt-3">Tickets Solved</p>
+          </div>
+          <div>
+            <h2 class="text-5xl font-black text-orange-500">24/7</h2>
+            <p class="text-zinc-500 mt-3">IT Operations</p>
+          </div>
+        </div>
 
-            <p className="text-orange-500 uppercase tracking-[4px] font-semibold mb-6">
-              Enterprise IT Infrastructure Specialist
-            </p>
+      </div>
 
-            <h1 className="text-6xl lg:text-8xl font-black leading-tight mb-10">
-              Rajkumar BK
-            </h1>
+      <!-- RIGHT SIDE -->
+      <div class="relative">
 
-            <p className="text-2xl text-zinc-300 leading-10 mb-10">
-              Passionate IT Network Engineer living in Japan with experience in
-              enterprise networking, Microsoft 365, Active Directory,
-              troubleshooting, virtualization, and cloud technologies.
-              Currently working in a multinational company supporting modern IT infrastructure.
-            </p>
+        <!-- MAIN CARD -->
+        <div class="relative bg-gradient-to-b from-zinc-900 to-black border border-white/10 rounded-[40px] p-10 shadow-[0_20px_100px_rgba(0,0,0,0.8)]">
 
-            <p className="text-xl text-zinc-400 leading-10 mb-14">
-              Specialized in enterprise IT operations, VPN support,
-              Windows Server administration, Microsoft 365 ecosystem,
-              virtualization platforms, endpoint management,
-              network troubleshooting, cloud integration, and infrastructure support.
-              Experienced in supporting multinational environments with strong communication and customer-focused troubleshooting.
-            </p>
+          <img
+            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1400&auto=format&fit=crop"
+            class="rounded-3xl w-full"
+            alt="IT Network"
+          />
 
-            {/* BUTTONS */}
-            <div className="flex flex-wrap gap-6">
-
-              <button className="bg-orange-500 hover:bg-orange-600 transition px-10 py-5 rounded-2xl text-xl font-semibold shadow-2xl">
-                Explore Portfolio
-              </button>
-
-              <button className="bg-zinc-900 border border-zinc-800 hover:border-orange-500 transition px-10 py-5 rounded-2xl text-xl font-semibold">
-                Download Resume
-              </button>
-
-            </div>
-
-            {/* STATS */}
-            <div className="grid grid-cols-3 gap-8 mt-20">
-
+          <!-- FLOATING CARD 1 -->
+          <div class="absolute -left-10 top-20 bg-black/80 backdrop-blur-xl border border-white/10 p-6 rounded-3xl w-[280px] shadow-2xl">
+            <div class="flex items-center gap-5">
+              <div class="bg-orange-500 p-4 rounded-2xl">
+                <i data-lucide="network" class="w-6 h-6"></i>
+              </div>
               <div>
-                <h2 className="text-5xl font-black text-orange-500">
-                  3+
-                </h2>
-                <p className="text-zinc-400 mt-3">
-                  Years Experience
-                </p>
+                <h3 class="font-bold text-xl">Networking</h3>
+                <p class="text-zinc-400 mt-2 text-sm">LAN • WAN • VPN • DNS</p>
               </div>
+            </div>
+          </div>
 
+          <!-- FLOATING CARD 2 -->
+          <div class="absolute -right-10 bottom-10 bg-black/80 backdrop-blur-xl border border-white/10 p-6 rounded-3xl w-[280px] shadow-2xl">
+            <div class="flex items-center gap-5">
+              <div class="bg-purple-500 p-4 rounded-2xl">
+                <i data-lucide="cloud" class="w-6 h-6"></i>
+              </div>
               <div>
-                <h2 className="text-5xl font-black text-orange-500">
-                  100+
-                </h2>
-                <p className="text-zinc-400 mt-3">
-                  IT Issues Solved
-                </p>
+                <h3 class="font-bold text-xl">Cloud & M365</h3>
+                <p class="text-zinc-400 mt-2 text-sm">Azure • Intune • O365</p>
               </div>
-
-              <div>
-                <h2 className="text-5xl font-black text-orange-500">
-                  24/7
-                </h2>
-                <p className="text-zinc-400 mt-3">
-                  Infrastructure Support
-                </p>
-              </div>
-
             </div>
-
-          </div>
-
-          {/* RIGHT IMAGE */}
-          <div className="relative flex justify-center">
-
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-blue-500/20 blur-[120px] rounded-full"></div>
-
-            <div className="relative bg-zinc-950 border border-zinc-800 rounded-[40px] p-8 shadow-2xl">
-
-              <Image
-                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop"
-                alt="IT Engineer"
-                width={700}
-                height={700}
-                className="rounded-3xl object-cover"
-              />
-
-              {/* FLOATING CARD */}
-              <div className="absolute -bottom-10 -left-10 bg-zinc-900 border border-zinc-800 rounded-3xl p-6 shadow-2xl">
-
-                <div className="flex items-center gap-5">
-
-                  <div className="bg-orange-500 p-5 rounded-2xl">
-                    <Network size={40} />
-                  </div>
-
-                  <div>
-                    <h3 className="text-2xl font-bold">
-                      Enterprise Networking
-                    </h3>
-
-                    <p className="text-zinc-400 mt-2">
-                      LAN • WAN • VPN • DHCP • DNS
-                    </p>
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
           </div>
 
         </div>
-      </section>
+      </div>
 
-      {/* SKILLS */}
-      <section
-        id="skills"
-        className="py-28 px-6 bg-[#080808]"
-      >
+    </div>
+  </section>
 
-        <div className="max-w-7xl mx-auto">
+  <!-- SKILLS SECTION -->
+  <section class="py-28 px-6">
+    <div class="max-w-7xl mx-auto">
 
-          <div className="text-center mb-20">
+      <div class="text-center mb-20">
+        <p class="text-orange-500 uppercase tracking-[5px] mb-4">PROFESSIONAL EXPERTISE</p>
+        <h2 class="text-6xl font-black">Technical Skills</h2>
+      </div>
 
-            <p className="text-orange-500 uppercase tracking-[4px] mb-4">
-              Technical Expertise
-            </p>
+      <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
 
-            <h2 className="text-6xl font-black">
-              Professional Skills
-            </h2>
-
+        <!-- Card 1 -->
+        <div class="card-hover bg-zinc-900/60 backdrop-blur-xl border border-white/10 rounded-[32px] p-10">
+          <div class="text-orange-500 mb-8">
+            <i data-lucide="network" class="w-10 h-10"></i>
           </div>
-
-          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-10">
-
-            {[
-              {
-                icon: <Network size={42} />,
-                title: "Networking",
-                desc: "LAN/WAN, VPN, DHCP, DNS, Routing, Switching, Firewall Troubleshooting",
-              },
-              {
-                icon: <Server size={42} />,
-                title: "Servers",
-                desc: "Windows Server, Active Directory, Hyper-V, Group Policy, File Server",
-              },
-              {
-                icon: <ShieldCheck size={42} />,
-                title: "Security",
-                desc: "MFA, Endpoint Security, Access Control, Microsoft Defender",
-              },
-              {
-                icon: <MonitorSmartphone size={42} />,
-                title: "Support",
-                desc: "L1/L2 Support, Ticketing, M365, Troubleshooting, Device Support",
-              },
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="bg-zinc-900 border border-zinc-800 rounded-[32px] p-10 hover:border-orange-500 transition duration-300 hover:-translate-y-3"
-              >
-
-                <div className="text-orange-500 mb-8">
-                  {item.icon}
-                </div>
-
-                <h3 className="text-3xl font-bold mb-6">
-                  {item.title}
-                </h3>
-
-                <p className="text-zinc-400 leading-8 text-lg">
-                  {item.desc}
-                </p>
-
-              </div>
-            ))}
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* EXPERIENCE */}
-      <section
-        id="experience"
-        className="py-28 px-6"
-      >
-
-        <div className="max-w-6xl mx-auto">
-
-          <div className="text-center mb-20">
-
-            <p className="text-orange-500 uppercase tracking-[4px] mb-4">
-              Career Journey
-            </p>
-
-            <h2 className="text-6xl font-black">
-              Experience
-            </h2>
-
-          </div>
-
-          <div className="space-y-10">
-
-            <div className="bg-zinc-900 border border-zinc-800 rounded-[40px] p-12 hover:border-orange-500 transition">
-
-              <div className="flex flex-wrap items-center justify-between gap-6">
-
-                <div>
-
-                  <h3 className="text-4xl font-black">
-                    IT Network Engineer
-                  </h3>
-
-                  <p className="text-orange-500 text-xl mt-4">
-                    Multinational Company • Japan
-                  </p>
-
-                </div>
-
-                <div className="bg-orange-500/10 border border-orange-500/30 px-6 py-3 rounded-xl text-orange-400 font-semibold">
-                  Current Position
-                </div>
-
-              </div>
-
-              <p className="text-zinc-400 text-xl leading-10 mt-10">
-                Supporting enterprise users with networking,
-                Active Directory, Microsoft 365, VPN troubleshooting,
-                endpoint management, virtualization,
-                and infrastructure operations.
-              </p>
-
-              <div className="grid md:grid-cols-2 gap-6 mt-12">
-
-                {[
-                  "Microsoft 365 Administration",
-                  "Active Directory Management",
-                  "VPN & Remote Access Support",
-                  "Enterprise Network Troubleshooting",
-                  "Windows Infrastructure Support",
-                  "Virtualization & Hyper-V",
-                ].map((item, i) => (
-                  <div
-                    key={i}
-                    className="bg-black/40 border border-zinc-800 rounded-2xl px-6 py-5"
-                  >
-                    {item}
-                  </div>
-                ))}
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* CONTACT */}
-      <section
-        id="contact"
-        className="py-28 px-6 bg-[#080808]"
-      >
-
-        <div className="max-w-5xl mx-auto text-center">
-
-          <p className="text-orange-500 uppercase tracking-[4px] mb-4">
-            Contact
-          </p>
-
-          <h2 className="text-6xl font-black mb-8">
-            Let’s Work Together
-          </h2>
-
-          <p className="text-zinc-400 text-xl leading-10 max-w-3xl mx-auto">
-            Open for IT infrastructure opportunities, enterprise networking projects,
-            cloud technologies, technical collaboration, and professional networking.
-          </p>
-
-          <div className="flex flex-wrap justify-center gap-6 mt-16">
-
-            <a
-              href="#"
-              className="bg-zinc-900 border border-zinc-800 hover:border-orange-500 transition px-8 py-5 rounded-2xl flex items-center gap-4 text-lg"
-            >
-              <Mail />
-              Email
-            </a>
-
-            <a
-              href="#"
-              className="bg-zinc-900 border border-zinc-800 hover:border-orange-500 transition px-8 py-5 rounded-2xl flex items-center gap-4 text-lg"
-            >
-              <Linkedin />
-              LinkedIn
-            </a>
-
-            <a
-              href="#"
-              className="bg-zinc-900 border border-zinc-800 hover:border-orange-500 transition px-8 py-5 rounded-2xl flex items-center gap-4 text-lg"
-            >
-              <Github />
-              GitHub
-            </a>
-
-            <a
-              href="#"
-              className="bg-zinc-900 border border-zinc-800 hover:border-orange-500 transition px-8 py-5 rounded-2xl flex items-center gap-4 text-lg"
-            >
-              <Globe />
-              Portfolio
-            </a>
-
-          </div>
-
+          <h3 class="text-3xl font-bold mb-5">Networking</h3>
+          <p class="text-zinc-400 leading-8 text-lg">VPN, LAN/WAN, DHCP, DNS, Firewall, Routing &amp; Switching</p>
         </div>
 
-      </section>
+        <!-- Card 2 -->
+        <div class="card-hover bg-zinc-900/60 backdrop-blur-xl border border-white/10 rounded-[32px] p-10">
+          <div class="text-orange-500 mb-8">
+            <i data-lucide="server" class="w-10 h-10"></i>
+          </div>
+          <h3 class="text-3xl font-bold mb-5">Windows Server</h3>
+          <p class="text-zinc-400 leading-8 text-lg">Active Directory, Group Policy, Hyper-V, File Server</p>
+        </div>
 
-    </main>
-  );
-}
+        <!-- Card 3 -->
+        <div class="card-hover bg-zinc-900/60 backdrop-blur-xl border border-white/10 rounded-[32px] p-10">
+          <div class="text-orange-500 mb-8">
+            <i data-lucide="cloud" class="w-10 h-10"></i>
+          </div>
+          <h3 class="text-3xl font-bold mb-5">Cloud Services</h3>
+          <p class="text-zinc-400 leading-8 text-lg">Microsoft 365, Intune, Azure, Endpoint Management</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card-hover bg-zinc-900/60 backdrop-blur-xl border border-white/10 rounded-[32px] p-10">
+          <div class="text-orange-500 mb-8">
+            <i data-lucide="shield" class="w-10 h-10"></i>
+          </div>
+          <h3 class="text-3xl font-bold mb-5">IT Support</h3>
+          <p class="text-zinc-400 leading-8 text-lg">L1/L2 Troubleshooting, Ticketing, Enterprise Support</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>
